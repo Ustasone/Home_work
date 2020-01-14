@@ -40,12 +40,12 @@ print('new_full_addr', full_net_addr)
 
 ip_template = '''
 Network:
-{:8} {:8} {:8} {:8}
+{:<8} {:<8} {:<8} {:<8}
 {:08b} {:08b} {:08b} {:08b}
 '''
 
 
-print(ip_template.format( int(full_net_addr[0:8], 2), octets[1], octets[2], octets[3], int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3])))
+print(ip_template.format( int(full_net_addr[0:8], 2), int(full_net_addr[8:16], 2), int(full_net_addr[16:24], 2), int(full_net_addr[24:32], 2), int(full_net_addr[0:8], 2), int(full_net_addr[8:16], 2), int(full_net_addr[16:24], 2), int(full_net_addr[24:32], 2)))
 
 netmask_template = '''
 Netmask:
