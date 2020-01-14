@@ -45,7 +45,7 @@ Network:
 '''
 
 
-print(ip_template.format(octets[0], octets[1], octets[2], octets[3], int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3])))
+print(ip_template.format( int(full_net_addr[0:8], 2), octets[1], octets[2], octets[3], int(octets[0]), int(octets[1]), int(octets[2]), int(octets[3])))
 
 netmask_template = '''
 Netmask:
