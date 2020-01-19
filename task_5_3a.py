@@ -59,11 +59,11 @@ trunk_template = [
 ]
 
 var ={ 'access_template': access_template, 'trunk_template': trunk_template}
-
+chois = { 'access': 'Enter vlan number', 'trunk': 'Enter alowed vlans' }
 
 mode = input('Enter interface mode (access/trunk):')
 interface = input('Enter interface type and number:')
-vlans = input("Enter vlan(s) numbers:")
+vlans = input(chois[mode])
 
 
 
