@@ -18,21 +18,38 @@
 broadcast = "255.255.255.255"
 zero = "0.0.0.0"
 ipaddress = input('Enter ip-address:')
-
+state = "False"
 #for octet int ipaddress:
 
 
 
 ipadd = ipaddress.split('.')
 
+count = len(ipadd)
 
-if int(ipadd[0])  >= 1 and int(ipadd[0]) <= 223: 
-   print('unicast') 
-elif int(ipadd[0]) >= 224 and int(ipadd[0]) <= 239:
-   print('multicast')
-elif broadcast == ipaddress:
-    print('local broacast')
-elif zero == ipaddress:
-    print('unassigned')
+for octet in ipadd:
+    if octet.isdigit() == "False":
+       print(octet.isdigit())
+       digit = 0
+       break 
+    elif int(octet) >= 0 and int(octet) < 255:
+        mark = 1
+        digit = 1
+    else:
+        mark = 0
+
+
+
+if mark == 1 and count == 4 and digit == 1:
+    if int(ipadd[0])  >= 1 and int(ipadd[0]) <= 223: 
+       print('unicast') 
+    elif int(ipadd[0]) >= 224 and int(ipadd[0]) <= 239:
+       print('multicast')
+    elif broadcast == ipaddress:
+       print('local broacast')
+    elif zero == ipaddress:
+       print('unassigned')
+    else:
+        print('unused')
 else:
-    print('unused')
+    print('error')
