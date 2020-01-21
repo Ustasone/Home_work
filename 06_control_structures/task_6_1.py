@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 6.1
@@ -12,4 +13,8 @@
 '''
 
 mac = ['aabb:cc80:7000', 'aabb:dd80:7340', 'aabb:ee80:7000', 'aabb:ff80:7000']
-
+print(mac)
+newmac = []
+for macadd in mac:
+    newmac.append(macadd.replace(':','.')) 
+print(newmac)
