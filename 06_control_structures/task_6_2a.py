@@ -18,29 +18,34 @@
 broadcast = "255.255.255.255"
 zero = "0.0.0.0"
 ipaddress = input('Enter ip-address:')
-state = "False"
+mark = 1
 #for octet int ipaddress:
-
+err = 0
 
 
 ipadd = ipaddress.split('.')
 
 count = len(ipadd)
 
-for octet in ipadd:
-    if octet.isdigit() == "False":
-       print(octet.isdigit())
-       digit = 0
-       break 
-    elif int(octet) >= 0 and int(octet) < 255:
-        mark = 1
-        digit = 1
-    else:
-        mark = 0
+if count == 4:
+    for octet in ipadd:
+        if octet.isdigit():
+            if int(octet) >= 0 and int(octet) <= 255:
+                digit = 1
+            else:
+                mark = 0
+                digit = 1
+                #print('Wromg ip')
+        
+        else:
+            digit = 0
+            mark = 0
+            #print('Wrong ip')
+            break
+else:
+     err = 1
 
-
-
-if mark == 1 and count == 4 and digit == 1:
+if count == 4 and digit == 1 and mark == 1 and err == 0:
     if int(ipadd[0])  >= 1 and int(ipadd[0]) <= 223: 
        print('unicast') 
     elif int(ipadd[0]) >= 224 and int(ipadd[0]) <= 239:
@@ -52,4 +57,4 @@ if mark == 1 and count == 4 and digit == 1:
     else:
         print('unused')
 else:
-    print('error')
+    print('WRONG IP')
