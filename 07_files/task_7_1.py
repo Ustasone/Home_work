@@ -16,8 +16,28 @@ Outbound Interface:    FastEthernet0/0
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
-with open('ospf.txt', 'r') af f:
-    for line int f:
+
+template = '''
+Protocol:              {}
+Prefix:                {}
+AD/Metric:             {}
+Next-Hop:              {}
+Last update:           {}
+Outbound Interface:    {}
+'''
+
+
+with open('ospf.txt', 'r') as f:
+    for new_ospf in f:
+        new_ospf = new_ospf.replace(',','')
+        new_ospf = new_ospf.replace('[','')
+        new_ospf = new_ospf.replace(']','')
+        new_ospf = new_ospf.replace('O','OSPF')
+        #print(new_ospf)
+        ospf = new_ospf.split()
+        #print(ospf)
+        print(template.format(ospf[0],ospf[1],ospf[2],ospf[3],ospf[4],ospf[5]))
+
         
 
 
