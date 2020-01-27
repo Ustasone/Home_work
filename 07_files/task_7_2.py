@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.2
@@ -12,3 +13,11 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 '''
+
+with open('config_sw1.txt', 'r') as f:
+    for string in f:
+        string =(string.rstrip('!\n'))
+        print(string.rstrip(' !\n'))
+
+
+
