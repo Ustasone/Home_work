@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.2a
@@ -13,3 +14,19 @@
 '''
 
 ignore = ['duplex', 'alias', 'Current configuration']
+
+with open('config_sw1.txt', 'r') as f:
+    for string in f:
+        if string.startswith('!'):
+            pass
+            #print('find')
+        else:
+            for i in ignore:
+                if string.find('alias') >= 0:
+                    pass
+                else:
+                    string1 = string
+            print(string1.rstrip('\n'))
+
+
+            
