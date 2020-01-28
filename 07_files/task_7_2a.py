@@ -22,11 +22,15 @@ with open('config_sw1.txt', 'r') as f:
             #print('find')
         else:
             for i in ignore:
-                if string.find('alias') >= 0:
+                if string.find(i) >= 0:
+                    #print(string.find(i))
+                    #print(i)
+                    #print('if')
                     pass
                 else:
+                    #print('else')
                     string1 = string
-            print(string1.rstrip('\n'))
+                    print(string1)
 
 
             
