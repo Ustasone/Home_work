@@ -18,11 +18,8 @@ with open('config_sw1.txt', 'r') as f:
     for string in f:
         if string.startswith('!'):
             pass
-            #print('find')
         else:
-            #string =(string.rstrip('!\n'))
-            #print(string)
-            print(string.rstrip('!\n'))
+            print(string.rstrip())
 
 
 
