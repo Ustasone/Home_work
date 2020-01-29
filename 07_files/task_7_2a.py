@@ -19,11 +19,11 @@ with open('config_sw1.txt', 'r') as f:
     for string in f:
             for i in ignore:
                 if string.find(i) >= 0:
-                    string = '!'
+                    string = '#'
                     break
                 else:
                     pass
-            if string.startswith('!'):
+            if string.startswith('!') or string.startswith('#'):
                 pass
             else:
                 print(string.rstrip('\n')) 
