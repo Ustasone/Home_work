@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.3
@@ -17,3 +18,23 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
+ignore = ['sw1', 'Mac', '---', 'Vlan']
+
+
+with open('CAM_table.txt', 'r') as f:
+    for string in f:
+        for i in ignore:
+            if string.find(i) >= 0:
+                string = '#' 
+                break
+            else:
+                pass
+        if string.startswith('#'):
+            pass
+        else:
+            string = string.rstrip('\n')
+            print(string)
+
+
+
+
