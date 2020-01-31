@@ -20,7 +20,7 @@
 '''
 ignore = ['sw1', 'Mac', '---', 'Vlan']
 
-
+new_list = []
 with open('CAM_table.txt', 'r') as f:
     for string in f:
         for i in ignore:
@@ -32,9 +32,13 @@ with open('CAM_table.txt', 'r') as f:
         if string.startswith('#'):
             pass
         else:
+            string = string.rstrip('\r\n')
             string = string.rstrip('\n')
-            print(string.replace('  DYNAMIC   ',''))
-
+            string = string.replace('  DYNAMIC   ','')
+            new_list = string.split()
+            if len(new_list) > 0:
+                print(string)
+            #print(ignore)
 
 
 
