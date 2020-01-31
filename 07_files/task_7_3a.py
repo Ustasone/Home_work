@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 7.3a
@@ -22,3 +23,49 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 '''
+ignore = ['sw1', 'Mac', '---', 'Vlan']
+new_dict = {}
+j = 0
+#print(new_dict) 
+with open('CAM_table.txt', 'r') as f:
+    for string in f:
+        #j = j + 1
+        for i in ignore:
+            if string.find(i) >= 0:
+                string = '#'
+                break
+            else:
+                pass
+        if string.startswith('#'):
+            pass
+        else:
+            string = string.rstrip('\n')
+            string = (string.replace('  DYNAMIC   ',''))
+            new_list = string.split()
+            if len(new_list) > 0:
+                new_dict.update({j: new_list})
+                j = j + 1
+print(new_dict)
+P = 0
+k = 0
+n = 0
+temp = {}
+for k in range(j-1):
+    for n in range(j-k-1):
+        if new_dict[k][0] <= new_dict[k + 1][0]:
+            pass
+            #print('OK') 
+            #P = 1
+        else:
+            temp.update({k: new_dict[k]})
+            new_dict.update({k: new_dict[k + 1]})
+            new_dict.update({k + 1: temp[k]})
+            print(temp)
+            P = 1  
+            #print('NOK')    
+    if P == 0:
+        break
+    else:
+        pass
+
+print(new_dict)
