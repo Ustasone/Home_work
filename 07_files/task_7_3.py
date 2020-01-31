@@ -33,7 +33,7 @@ with open('CAM_table.txt', 'r') as f:
             pass
         else:
             string = string.rstrip('\n')
-            print(string)
+            print(string.replace('  DYNAMIC   ',''))
 
 
 
