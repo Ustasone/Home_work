@@ -71,5 +71,7 @@ for k in range(j):
         break
     else:
         pass
-
-print(new_dict)
+output_template = '''{:4}     {:14}     {:5}'''
+for q in range(j):
+    temp_string = output_template.format(new_dict[q][0],new_dict[q][1],new_dict[q][2])
+    print(temp_string.rstrip())
