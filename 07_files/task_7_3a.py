@@ -46,23 +46,27 @@ with open('CAM_table.txt', 'r') as f:
                 new_dict.update({j: new_list})
                 j = j + 1
 print(new_dict)
+print('--------------------------')
 P = 0
-k = 0
-n = 0
+#k = 0
+#n = 0
 temp = {}
-for k in range(j-1):
-    for n in range(j-k-1):
-        if new_dict[k][0] <= new_dict[k + 1][0]:
-            pass
+for k in range(j):
+    for n in range(j-k-2):
+        #if new_dict[n][0] <= new_dict[n + 1][0]:
+            #pass
             #print('OK') 
             #P = 1
-        else:
-            temp.update({k: new_dict[k]})
-            new_dict.update({k: new_dict[k + 1]})
-            new_dict.update({k + 1: temp[k]})
-            print(temp)
+        #else:
+        if new_dict[n][0] >= new_dict[n + 1][0]:
+            temp.update({'0': new_dict[n]})
+            new_dict.update({n: new_dict[n + 1]})
+            new_dict.update({n + 1: temp['0']})
+            #print(temp)
             P = 1  
             #print('NOK')    
+        else:
+            pass
     if P == 0:
         break
     else:
