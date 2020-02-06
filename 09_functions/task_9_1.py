@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 '''
 Задание 9.1
@@ -65,4 +66,11 @@ def generate_access_config(intf_vlan_mapping, access_template):
 
     Возвращает список всех портов в режиме access с конфигурацией на основе шаблона
     '''
+    string = intf_vlan_mapping
+    string = string + ' '
+    string = string + str(access_config[intf_vlan_mapping]) 
+    string = string + ' {} {} {} {} {}'.format(*access_template)
+    return(string)
 
+for intf in access_config.keys():
+    print(generate_access_config(intf, access_mode_template))
