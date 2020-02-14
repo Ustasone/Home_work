@@ -24,7 +24,24 @@
 '''
 
 def get_int_vlan_map(config_filename):
+    tr_vl_list = []
+    access_dict = {}
+    trunk_dict = {}
+    ports = (access_dict, trunk_dict)
     with open(config_filename, 'r') as f:
         for string in f:
             if string.startswith('interface'):
-                
+               intf = string[10:].strip()
+            else:
+                if string.startswith(' switchport access'):
+                    vlan = int(string[24:].strip())
+                    access_dict.update({intf: vlan})
+                else:
+                    if string.startswith(' switchport trunk allowed'):
+                        temp_list = string[31:].strip().split(',')
+                        result = [int(item) for item in temp_list]
+                        trunk_dict.update({intf: result})
+                    else:
+                        pass
+    return(ports)
+print(get_int_vlan_map('config_sw1.txt'))
