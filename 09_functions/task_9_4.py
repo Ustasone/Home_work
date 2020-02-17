@@ -35,4 +35,28 @@ def ignore_command(command, ignore):
     * True, если в команде содержится слово из списка ignore
     * False - если нет
     '''
-    return any(word in command for word in ignore)
+
+    #if command.startswith('!'):
+        #result = False
+    #else:
+    for item in ignore:
+        if command.find(item) >= 0:
+            result = False
+        else:
+            result = True
+    return(result)
+
+
+def convert_config_to_dict(config_filename):
+command_dict = {}
+    with open('config_filename', 'r') as f:
+        for string in f:
+            if string.startswith('!'):
+                pass
+            else:
+                if string.startswith(' '):
+                    command_dict.update({temp: string})
+                else:
+                    temp = string
+                    command_dict.update({string: ''})
+
