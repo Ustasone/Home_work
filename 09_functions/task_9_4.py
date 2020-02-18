@@ -58,11 +58,12 @@ def convert_config_to_dict(config_filename):
                     pass
                 else:
                     if string.startswith(' '):
-                        subcommand.append(string)
-                        command_dict[temp] = [item for item in string] 
+                        #subcommand.append(string)
+                        #command_dict[temp] = []
+                        command_dict[temp].append(string)
                     else:
                         temp = string
-                        command_dict.update({string: ''})
+                        command_dict[string] = [] 
         return(command_dict)
 '''
             else:
