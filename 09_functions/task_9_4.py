@@ -34,29 +34,53 @@ def ignore_command(command, ignore):
     Возвращает
     * True, если в команде содержится слово из списка ignore
     * False - если нет
-    '''
-
-    #if command.startswith('!'):
-        #result = False
-    #else:
+'''
     for item in ignore:
         if command.find(item) >= 0:
-            result = False
+            #print('finded') 
+            #print(command)
+            result = 'True'
+            break
         else:
-            result = True
+            result = 'False'
     return(result)
 
 
 def convert_config_to_dict(config_filename):
-command_dict = {}
-    with open('config_filename', 'r') as f:
+    command_dict = {}
+    subcommand = []
+    with open(config_filename, 'r') as f:
         for string in f:
             if string.startswith('!'):
                 pass
             else:
-                if string.startswith(' '):
-                    command_dict.update({temp: string})
+                if ignore_command(string, ignore) == 'True':
+                    pass
                 else:
+                    if string.startswith(' '):
+                        subcommand.append(string)
+                        command_dict[temp] = [item for item in string] 
+                    else:
+                        temp = string
+                        command_dict.update({string: ''})
+        return(command_dict)
+'''
+            else:
+                if string.startswith(' '):
+                    if ignore_command(string, ignore) == 'False':
+                        #print(ignore_command(string, ignore))
+                        subcommand.append(string)
+                        #print('=======subcommand=======')
+                        #print(subcommand)
+                        command_dict.setdefault(temp, subcommand)
+                        #print(command_dict)
+                    else:
+                        pass
+                else:
+                    #subcommand = []
                     temp = string
                     command_dict.update({string: ''})
 
+    return(command_dict)
+'''
+print(convert_config_to_dict('config_sw1.txt'))
