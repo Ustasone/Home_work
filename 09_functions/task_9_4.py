@@ -37,8 +37,6 @@ def ignore_command(command, ignore):
 '''
     for item in ignore:
         if command.find(item) >= 0:
-            #print('finded') 
-            #print(command)
             result = 'True'
             break
         else:
@@ -51,34 +49,27 @@ def convert_config_to_dict(config_filename):
     subcommand = []
     with open(config_filename, 'r') as f:
         for string in f:
-            if string.startswith('!'):
+            if string.startswith('!') or string.startswith('\n'):
                 pass
             else:
                 if ignore_command(string, ignore) == 'True':
                     pass
                 else:
                     if string.startswith(' '):
-                        #subcommand.append(string)
-                        #command_dict[temp] = []
-                        command_dict[temp].append(string)
+                        command_dict[temp].append(string.strip())
                     else:
-                        temp = string
-                        command_dict[string] = [] 
+                        temp = string.strip()
+                        command_dict[string.strip()] = [] 
         return(command_dict)
 '''
             else:
                 if string.startswith(' '):
                     if ignore_command(string, ignore) == 'False':
-                        #print(ignore_command(string, ignore))
                         subcommand.append(string)
-                        #print('=======subcommand=======')
-                        #print(subcommand)
                         command_dict.setdefault(temp, subcommand)
-                        #print(command_dict)
                     else:
                         pass
                 else:
-                    #subcommand = []
                     temp = string
                     command_dict.update({string: ''})
 
