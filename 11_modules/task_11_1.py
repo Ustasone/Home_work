@@ -47,9 +47,9 @@ def parse_cdp_neighbors(command_output):
                temp_list1 = []
                temp_list2 = []             
                temp_list1.insert(0,name)
-               temp_list1.insert(1,string[13:20])
+               temp_list1.insert(1,string[13:20].replace(' ',''))
                temp_list2.insert(1,string[0:2])
-               temp_list2.insert(2,string[-7:])
+               temp_list2.insert(2,string[-7:].replace(' ',''))
                temp_tuple1 = tuple(temp_list1)
                temp_tuple2 = tuple(temp_list2)
                temp_dict.update({temp_tuple1:temp_tuple2}) 
@@ -68,6 +68,4 @@ if __name__ == "__main__":
     f = open('sh_cdp_n_sw1.txt')
     string = f.read()
     print(parse_cdp_neighbors(string))
-
-#if __name__ == "__main__":
-#    result print(parse_cdp_neighbors(string))
+   
